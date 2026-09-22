@@ -132,6 +132,7 @@ def health_check() -> Dict[str, str]:
 
 
 @app.post("/new_game")
+@app.post("/new-game")
 def new_game() -> Dict[str, Any]:
     """Reset the global board session to a fresh 15x15 empty grid."""
     global current_board
@@ -221,6 +222,7 @@ def make_move(move_req: MoveRequest) -> Dict[str, Any]:
 
 
 @app.post("/ai_move")
+@app.post("/ai-move")
 def compute_ai_move(ai_req: AIMoveRequest) -> Dict[str, Any]:
     """Stateless endpoint: compute optimal AI move for an arbitrary board state."""
     # Reconstitute incoming grid into a temporary Board instance

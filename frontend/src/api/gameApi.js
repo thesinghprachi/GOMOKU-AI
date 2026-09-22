@@ -22,7 +22,10 @@
  * =============================================================================
  */
 
-export const API_BASE = 'https://gomoku-ai-backend.onrender.com/';
+// Automatically resolves to VITE_API_URL in production or local loopback in development,
+// while safely removing any trailing slash to prevent double-slash URL corruption.
+const rawApiBase = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+export const API_BASE = rawApiBase.replace(/\/+$/, '');
 
 /**
  * Helper to process Fetch responses, extracting server JSON error messages if available.
