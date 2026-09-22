@@ -24,3 +24,5 @@ frontend/.vite/
 # OS
 .DS_Store
 Thumbs.db
+
+!frontend/.env.production
