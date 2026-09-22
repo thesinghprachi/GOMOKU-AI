@@ -22,7 +22,7 @@
  * =============================================================================
  */
 
-export const API_BASE = 'http://127.0.0.1:8000';
+export const API_BASE = 'https://gomoku-ai-backend.onrender.com/';
 
 /**
  * Helper to process Fetch responses, extracting server JSON error messages if available.
