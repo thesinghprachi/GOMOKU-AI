@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GomokuAI-Agent 3D</title>
+
+    <!--
+      CRITICAL CONSTRAINT (COURSE / VIVA EXPLANATION):
+      Three.js and OrbitControls are loaded via external CDN <script> tags rather than
+      bundled via 'npm install three'.
+
+      Why this design choice:
+      1. Course/Project Requirement: The 3D graphics libraries must be explicitly visible
+         as external dependencies in the HTML document rather than obfuscated inside a
+         bundled node_modules artifact.
+      2. Global Namespace vs. ES Module Bundling: Loading via script tags binds Three.js
+         to the global `window.THREE` object. In React components, we access Three.js as
+         `window.THREE` rather than `import * as THREE from 'three'`.
+      3. Version Consistency & Loading Order:
+         - Revision r128 (0.128.0) is strictly used for BOTH Three.js and OrbitControls.
+           Mismatched versions are the #1 cause of silent prototype bugs in Three.js addons.
+         - Three.js is loaded FIRST so that the global `THREE` object exists when OrbitControls
+           executes, allowing OrbitControls to attach itself to `THREE.OrbitControls`.
+    -->
+    <!-- 1. Three.js core library (r128) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- 2. Matching OrbitControls addon (r128) - loaded strictly AFTER Three.js core -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script type="module" crossorigin src="/assets/index-CNsEgsQ9.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-D67ruG7n.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
